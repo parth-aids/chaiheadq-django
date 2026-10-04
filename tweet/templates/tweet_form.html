@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    {% if form.instance.pk %}Edit Tweet{% else %}Create Tweet{% endif %}
+{% endblock %}
+
+{% block content %}
+    <h1 class="text-center text-white mt-4">Welcome to Parth's Django project</h1>
+
+    <h2 class="text-white">
+        {% if form.instance.pk %}
+            Edit Tweet
+        {% else %}
+            Create Tweet
+        {% endif %}
+    </h2>
+
+    <form action="" method="post" enctype="multipart/form-data" class="form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-warning" type="submit">Submit</button>
+    </form>
+
+    <a href="{% url 'tweet_list' %}">Back to Tweet list</a>
+{% endblock %}
